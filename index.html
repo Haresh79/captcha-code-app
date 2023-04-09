@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Capture Code</title>
+<style>
+.container{height:100%; width:60%; padding:40px; border-radius:10px;
+background-color:#ebebeb; margin:20px; border:1px solid black;}
+#code{height:80px; width:95%; box-shadow:2px 2px 5px rgba(0,0,0,0.2);
+background-color:white; font-size:55px; text-align:center; font-style:italic;}
+#value{height:50px; width:80%; margin-top:20px; border:none; box-shadow:2px 2px 5px rgba(0,0,0,0.2) inset; 
+text-align:center;}
+#ok{padding:10px; width:70px; margin-top:10px;border:1px solid #6ded8f; border-radius:10px;}
+#ok:hover{background-color:#6ded8f;}
+</style>
+</head>
+<body bgcolor="#6ded8f">
+<div class="container">
+<div id="code"></div>
+<input type="text" id="value" placeholder="Enter The Code" >
+<button id="ok" onclick="valid()">OK</button>
+</div>
+<script type="text/javascript">
+const charecters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const numbers="0123456789";
+var capture="";
+let input="";
+
+function codeGenereter(){
+  for(let i=1; i<4; i++){
+	let randNum1 = Math.floor(Math.random()*((52-0)+0));
+	capture += charecters[randNum1];
+
+	let randNum2 = Math.floor(Math.random()*((9-0)+0));
+	capture += numbers[randNum2];
+
+	}
+  document.getElementById('code').innerText=capture;
+}
+
+function valid(){
+	input=document.getElementById('value').value;
+	if(input === capture){
+		alert("Congratulation you entered correct captcha code");
+	}
+	else{
+	    alert("Sorry Please enter the correct captch code");
+	}
+}
+codeGenereter()
+</script>
+</body>
+</html>
